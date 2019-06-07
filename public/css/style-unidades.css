@@ -1,0 +1,695 @@
+/*----------------------------------------------Importando CSS de Reset*/
+@import url(reset.css);
+body{
+    background: #fff;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    font-variant: small-caps;
+}
+/* ---------------------------------------------- Configurações globais*/
+/* --------------------- Configurando a estrutura da Pagina no id-page */
+
+#page{
+    background: #f00;
+    width:100%;
+    position:relative;
+}
+
+/* ------------------------------------------- Configurando o cabeçalho*/
+#page header{
+    width: 100%;
+    float: left;
+    z-index: 9999;
+    position: fixed;
+    top:0;
+    left: center;
+    background: rgb(24, 11, 70);
+}
+/* Reset list-auto */
+.list-auto, .list-auto li{
+    width: 100%;
+    float: left;
+    display: block;
+    position: relative;
+}
+.list-auto, .list-auto li{width: auto;}
+/* --------------------------- Ocultar checbox --*/
+#page header input#controle-nav{
+    visibility: hidden;
+    position: absolute;
+    left: -99999px;
+    opacity: 0;
+}
+
+/* ------------------------------------------------ Configurando o main*/
+#page main{
+    width: 100%;
+    float: left;
+    position: relative;
+    background: #fff;
+}
+#page .row{
+    width:100%;
+    float: left;
+}
+/* ---------------------------------------------- Configurando o rodape*/
+#page footer{
+    width: 100%;
+    float: left;
+    position: relative;
+    background: rgb(24, 11, 70);
+}
+/* --------------------- midia query ate 1024px de largura -----------------------------------------------------------*/
+@media screen and (min-width: 1px) and (max-width: 1024px){
+    #page header nav{background: rgb(98, 100, 179);}
+    #page header ul{padding: 15px 10px 0 0;}
+    #page header li{border-left: 1px solid #fff;}
+    #page header li:first-child{border:none;}
+    #page header li a{
+        display: block;
+        padding: 0 10px;
+        color: #fff;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: none;
+        -webkit-transition: all 300ms ease;
+        transition: all 300ms ease;
+    }
+    #page header li a:hover{color:#333;}
+    #page header nav{
+        width: 250px;
+        position: fixed;
+        top:0;
+        right:0;
+        bottom:0;
+        z-index: 200;
+        overflow: auto;
+        -webkit-transition: all 500ms ease;
+        transition: all 500ms ease;
+        -webkit-transform: translate(100%, 0);
+        -ms-kit-transform: translate(100%, 0);
+        transform: translate(100%, 0);
+    }
+    #page header .controle-nav{
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        display: block;
+        width: 30px;
+        padding: 5px 0;
+        border: 3px solid rgb(98, 100, 179);
+        border-width: 3px 0;
+        z-index: 200;
+        cursor: pointer;
+    }
+    #page header .controle-nav:before{
+        content: "";
+        display: block;
+        height: 3px;
+        background: rgb(98, 100, 179);
+    }
+    #page header .controle-nav-fecha{
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: block;
+        z-index: 1;
+        background: rgba(0,0,0,0.4);
+        -webkit-transition: all 500ms ease;
+        transition: all 500ms ease;
+        -webkit-transform: translate(100%,0);
+        -ms-transform: translate(100%,0);
+        transform: translate(100%,0);
+    }
+    #page header #controle-nav:checked ~ nav{
+        -webkit-trasnform: translate(0,0);
+        -ms-transform: translate(0,0);
+        transform: translate(0,0);
+    }
+    #page header #controle-nav:checked ~ .controle-nav-fecha{
+        -webkit-trasnform: translate(0,0);
+        -ms-transform: translate(0,0);
+        transform: translate(0,0);
+       }
+    #page header nav li a{
+        display: block;
+        padding: 20px 10px;
+    }
+    /* -- Ajuste do menu um elemento abaixo do outro --*/
+    #page header ul.list-auto{padding:0;}
+    #page header ul.list-auto li{
+        width: 100%;
+        border: 1px solid #eee;
+        border-width: 0 0 1px;
+    }
+    #page header li a {text-decoration: none;}
+    #page header li a:hover{
+        color: #fff;
+        background: rgba(255,255,255,0.4);
+    }
+}
+/* ---------------------- midia query Smartphone ate 480px de largura--*/
+@media screen and (min-width: 1px) and (max-width: 480px){
+    /* --------------------- Configuração header ----------------------- */
+    #page header{
+        width: 100%;
+    }
+    #page header .contain .logo{
+        position: relative;
+        float: left;
+    }
+    #page header .contain .logo img{
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        margin: 15px;
+    }
+    /* --------------------- Configuração main ------------------------ */
+    #page main{
+        width: 100%;
+        margin-top: 150px;
+        float: left;
+    }
+    #page main .row h1{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 10px 0;
+    }
+    #page main .row h1{
+        font-size: 48px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 50px 0px;
+    }
+    #page main .row2 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row2 h2:hover{
+        color:#000;
+    }
+    #page main .row2 img{
+        width: 100%;
+        height: 400px;
+        float: left;
+    }
+    #page main .row2 p{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row2 h4{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row2 h4:hover{
+        color:#000;
+    }
+    #page main .row3 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: right;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row3 h2:hover{
+        color:#000;
+    }
+    #page main .row3 img{
+        width: 100%;
+        height: 400px;
+        float: right;
+    }
+    #page main .row3 p{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row3 h4{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row3 h4:hover{
+        color:#000;
+    }
+    /* -------------------------- Configuração footer ------------------*/
+    #page footer{
+        width: 100%;
+        margin-top: 150px;
+        float: left;
+    }
+    #page footer .row{
+        width: 100%;
+        color: #fff;
+        float: left;
+    }
+    #page footer .row .col-4{
+        width: 100%;
+        float: left;
+        /* margin-left: 5%; */
+    }
+    #page footer .row .col-4 img{
+        width: 44px;
+        height: 44px;
+        margin: 15px;
+        float: left;
+        border-radius: 50%;
+    }
+    #page footer .row .col-4 a{
+        color: #fff;
+    }
+    #page footer .row .col-4 h3{
+        font-size: 20px;
+    }
+    #page footer .row .col-4 form{
+        float: left;
+        margin: 1px;
+    }
+    #page footer .row .col-4 form input{
+        width: 250px;
+        margin-top: 10px;
+        padding: 3px;
+    }
+    #page footer .row .col-4 form label{display: none;}
+    #page footer .row .col-4 form button{
+        width: 80px;
+        height: 30px;
+        margin-top: 10px;
+        background: rgb(98, 100, 179);
+        border: rgb(98, 100, 179);
+        font-style: sans-serif;
+        color: #fff;
+    }
+    #page footer .row .col-4 form button:hover{
+        background: rgb(81, 83, 179);
+    }   
+    #page footer .copyright{
+        width: 100%;
+        color: #fff;
+        float: left;
+    }
+}
+/* ------------------------ midia query Tablet ate 1024px de largura --*/
+@media screen and (min-width: 481px) and (max-width: 1024px){
+    /* --------------------- Configuração header ----------------------- */
+    #page header{
+        width: 100%;
+    }
+    #page header .contain .logo{
+        position: relative;
+        float: left;
+    }
+    #page header .contain .logo img{
+        width: 88px;
+        height: 88px;
+        border-radius: 50%;
+        margin: 15px;
+    }
+    /* --------------------- Configuração main ------------------------ */
+    #page main{
+        width: 100%;
+        margin-top: 150px;
+        float: left;
+    }
+    #page main .row h1{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 10px 0;
+    }
+    #page main .row h1{
+        font-size: 48px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 50px 0px;
+    }
+    #page main .row2 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row2 h2:hover{
+        color:#000;
+    }
+    #page main .row2 img{
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        float: left;
+    }
+    #page main .row2 p{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row2 h4{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row2 h4:hover{
+        color:#000;
+    }
+    #page main .row3 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: right;
+        text-align: right;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row3 h2:hover{
+        color:#000;
+    }
+    #page main .row3 img{
+        width: 100%;
+        max-width: 600px;
+        height: 400px;
+        float: right;
+    }
+    #page main .row3 p{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row3 h4{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row3 h4:hover{
+        color:#000;
+    }
+    /* -------------------------- Configuração footer ------------------*/
+    #page footer{
+        width: 100%;
+        margin-top: 150px;
+        float: left;
+    }
+    #page footer .row{
+        width: 100%;
+        color: #fff;
+        float: left;
+    }
+    #page footer .row .col-4{
+        width: 50%;
+        float: left;
+        /* margin-left: 5%; */
+    }
+    #page footer .row .col-4 img{
+        width: 88px;
+        height: 88px;
+        margin: 15px;
+        float: left;
+        border-radius: 50%;
+    }
+    #page footer .row .col-4 a{
+        color: #fff;
+    }
+    #page footer .row .col-4 h3{
+        font-size: 20px;
+    }
+    #page footer .row .col-4 form{
+        float: left;
+        margin: 1px;
+    }
+    #page footer .row .col-4 form input{
+        width: 250px;
+        margin-top: 10px;
+        padding: 3px;
+    }
+    #page footer .row .col-4 form label{display: none;}
+    #page footer .row .col-4 form button{
+        width: 80px;
+        height: 30px;
+        margin-top: 10px;
+        background: rgb(98, 100, 179);
+        border: rgb(98, 100, 179);
+        font-style: sans-serif;
+        color: #fff;
+    }
+    #page footer .row .col-4 form button:hover{
+        background: rgb(81, 83, 179);
+    }   
+    #page footer .copyright{
+        width: 100%;
+        color: #fff;
+        float: left;
+    }
+}
+/* --------------- midia query DeskTop a partir de 1025px de largura --*/
+@media screen and (min-width: 1025px){
+    /* --------------------- Configuração header ----------------------- */
+    #page header{
+        height: 150px;
+    }
+    #page header .contain{
+        width: 1024px;
+        height: 150px;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+    }
+    #page header .contain .logo{
+        width: 88px;
+        position: relative;
+        float: left;
+        margin: 30px 0 0 5px;
+    }
+    /* -- Configuração do Menu Principal */
+    #page header .contain nav{
+        float: right;
+    }
+    #page header .contain .menu{
+        list-style: none;
+        float: left;
+        /* background: #0f0; */
+        margin: 30px 0 0 50px;
+    }
+    #page header .contain .menu li{
+        position: relative;
+        float: left;
+        width: 200px;
+    }
+    #page header .contain .menu li:first-child{border:none;}
+    #page header .contain .menu a{
+        color: #fff;
+        width: 120px;
+        font-size: 24px;
+        text-decoration: none;
+        padding: 5px 13px;
+        display: block;
+    }
+    #page header .contain .menu a:hover{
+        color: #fff;
+        text-shadow: 0 0 5px #fff;
+    }
+    #page header .contain .menu .dropdown{
+        position: absolute;
+        top:34px;
+        left: 0;
+        background: rgb(24, 11, 70);
+        display: none;
+    }
+    #page header .contain .menu .dropdown li{border:none;}
+    #page header .contain .menu li:hover ul{display: block;}
+    #page header .contain .menu .dropdown li ul{
+        position: absolute;
+        height: 50px;
+        top: 0px;
+        /* left: 75px; */
+        background: #fff;
+        /* display: none; */
+    }
+    #page header .contain .menu li ul li:hover ul{display: block;}
+    #page header .contain .menu .dropdown a{
+        font-size: 20px;
+    }
+    #page header .contain .menu .dropdown1{
+        position: absolute;
+        top:34px;
+        left: 0;
+        background: rgb(24, 11, 70);
+        display: none;
+    }
+    #page header .contain .menu .dropdown1 li ul{
+        position: absolute;
+        height: 50px;
+        top: 0px;
+        /* left: 75px; */
+        background: #fff;
+        /* display: none; */
+    }
+    #page header .contain .menu .dropdown1 a{
+        font-size: 14px;
+    }
+/* ---------------------- Configuração main ------------------------- */
+    #page main{
+        width: 1024px;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+        margin-top: 150px;
+    }
+    #page main .row h1{
+        font-size: 48px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 50px 10px;
+    }
+    #page main .row2 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row2 h2:hover{
+        color:#000;
+    }
+    #page main .row2 img{
+        width: 600px;
+        height: 400px;
+        float: left;
+    }
+    #page main .row2 p{
+        font-size: 24px;
+        width: 400px;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 5px;
+        letter-spacing: .2rem;
+    }
+    #page main .row3 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: right;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row3 h2:hover{
+        color:#000;
+    }
+    #page main .row3 img{
+        width: 600px;
+        height: 400px;
+        float: right;
+    }
+    #page main .row3 p{
+        font-size: 24px;
+        width: 400px;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 5px;
+        letter-spacing: .2rem;
+    }
+    /* -------------------------- Configuração footer --------------*/
+    #page footer{
+        width: 100%;
+        margin-top: 150px;
+        float: left;
+    }
+    #page footer .row{
+        width: 1024px;
+        color: #fff;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+    }
+    #page footer .row .col-4{
+        width: 33%;
+        float: left;
+        /* background: #f0f; */
+    }
+    #page footer .row .col-4 img{
+        margin: 5px;
+        float: left;
+        border-radius: 50%;
+    }
+    #page footer .row .col-4 a{
+        color: #fff;
+    }
+    #page footer .row .col-4 h3{
+        font-size: 20px;
+    }
+    #page footer .row .col-4 form{
+        margin: 1px;
+    }
+    #page footer .row .col-4 form input{
+        width: 250px;
+        margin-top: 10px;
+        padding: 3px;
+    }
+    #page footer .row .col-4 form label{display: none;}
+    #page footer .row .col-4 form button{
+        width: 80px;
+        height: 30px;
+        margin-top: 10px;
+        background: rgb(98, 100, 179);
+        border: rgb(98, 100, 179);
+        font-style: sans-serif;
+        color: #fff;
+    }
+    #page footer .row .col-4 form button:hover{
+        background: rgb(81, 83, 179);
+    }   
+    #page footer .copyright{
+        width: 100%;
+        color: #fff;
+        margin: 0 30%;
+        float: left;
+    }
+}

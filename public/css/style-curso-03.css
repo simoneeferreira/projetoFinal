@@ -1,0 +1,269 @@
+/*----------------------------------------------Importando CSS de Reset*/
+@import url(reset.css);
+body{
+    background: #fff;
+    font-size: 12px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    font-variant: small-caps;
+}
+/* ---------------------------------------------- Configurações globais*/
+/* --------------------- Configurando a estrutura da Pagina no id-page */
+
+#page{
+    background: #f00;
+    width:100%;
+    position:relative;
+}
+
+/* ------------------------------------------- Configurando o cabeçalho*/
+#page header{
+    width: 100%;
+    float: left;
+    z-index: 9999;
+    position: fixed;
+    top:0;
+    left: center;
+    background: rgb(24, 11, 70);
+}
+/* Reset list-auto */
+.list-auto, .list-auto li{
+    width: 100%;
+    float: left;
+    display: block;
+    position: relative;
+}
+.list-auto, .list-auto li{width: auto;}
+/* --------------------------- Ocultar checbox --*/
+#page header input#controle-nav{
+    visibility: hidden;
+    position: absolute;
+    left: -99999px;
+    opacity: 0;
+}
+
+/* ------------------------------------------------ Configurando o main*/
+#page main{
+    width: 100%;
+    float: left;
+    position: relative;
+    background: #fff;
+}
+#page .row{
+    width:100%;
+    float: left;
+}
+/* ---------------------------------------------- Configurando o rodape*/
+#page footer{
+    width: 100%;
+    float: left;
+    position: relative;
+    background: rgb(24, 11, 70);
+}
+/* --------------------- midia query Smartphone ate 380px de largura --*/
+@media screen and (min-width: 1px) and (max-width: 380px){
+}
+/* ---------------------- midia query Smartphone ate 480px de largura--*/
+@media screen and (min-width: 380px) and (max-width: 480px){
+}
+/* ------------------------ midia query Tablet ate 1024px de largura --*/
+@media screen and (min-width: 481px) and (max-width: 1024px){
+}
+/* --------------- midia query DeskTop a partir de 1025px de largura --*/
+
+/* ---------------------- Configuração main ---------------------------- */
+@media screen and (min-width: 1025px){
+    /* --------------------- Configuração header ----------------------- */
+    #page header{
+        height: 150px;
+    }
+    #page header .contain{
+        width: 1024px;
+        height: 150px;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+    }
+    #page header .contain .logo{
+        width: 88px;
+        position: relative;
+        float: left;
+        margin: 30px 0 0 5px;
+    }
+    /* -- Configuração do Menu Principal */
+    #page header .contain nav{
+        float: right;
+    }
+    #page header .contain .menu{
+        list-style: none;
+        float: left;
+        /* background: #0f0; */
+        margin: 30px 0 0 50px;
+    }
+    #page header .contain .menu li{
+        position: relative;
+        float: left;
+        width: 200px;
+    }
+    #page header .contain .menu li:first-child{border:none;}
+    #page header .contain .menu a{
+        color: #fff;
+        width: 120px;
+        font-size: 24px;
+        text-decoration: none;
+        padding: 5px 13px;
+        display: block;
+    }
+    #page header .contain .menu a:hover{
+        color: #fff;
+        text-shadow: 0 0 5px #fff;
+    }
+    #page header .contain .menu .dropdown{
+        position: absolute;
+        top:34px;
+        left: 0;
+        background: rgb(24, 11, 70);
+        display: none;
+    }
+    #page header .contain .menu .dropdown li{border:none;}
+    #page header .contain .menu li:hover ul{display: block;}
+    #page header .contain .menu .dropdown li ul{
+        position: absolute;
+        height: 50px;
+        top: 0px;
+        /* left: 75px; */
+        background: #fff;
+        /* display: none; */
+    }
+    #page header .contain .menu li ul li:hover ul{display: block;}
+    #page header .contain .menu .dropdown a{
+        font-size: 20px;
+    }
+    #page header .contain .menu .dropdown1{
+        position: absolute;
+        top:34px;
+        left: 0;
+        background: rgb(24, 11, 70);
+        display: none;
+    }
+    #page header .contain .menu .dropdown1 li ul{
+        position: absolute;
+        height: 50px;
+        top: 0px;
+        /* left: 75px; */
+        background: #fff;
+        /* display: none; */
+    }
+    #page header .contain .menu .dropdown1 a{
+        font-size: 14px;
+    }
+/* ---------------------- Configuração main ---------------------------- */
+    #page main{
+        width: 1024px;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+        margin-top: 150px;
+    }
+    #page main .row h1{
+        font-size: 48px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: center;
+        margin: 50px 10px;
+    }
+    #page main .row2 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row2 img{
+        width: 600px;
+        height: 400px;
+        float: left;
+    }
+    #page main .row2 p{
+        font-size: 24px;
+        width: 400px;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 5px;
+        letter-spacing: .2rem;
+    }
+    #page main .row3 p{
+        font-size: 24px;
+        width: 100%;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 0 5px;
+        text-align: justify;
+    }
+    #page main .row4 h2{
+        font-size: 36px;
+        color: rgb(98, 100, 179);
+        width: 100%;
+        float: left;
+        text-align: left;
+        margin: 80px 0 20px 0;
+    }
+    #page main .row4 p{
+        font-size: 24px;
+        width: 325px;
+        color: rgb(98, 100, 179);
+        float: left;
+        margin: 5px 0 10px 0px;
+        letter-spacing: .2rem;
+    }
+    #page main .row4 p:hover{
+        color: #000;
+    }
+    #page main .row4 img{
+        width: 300px;
+        height: 200px;
+        float: left;
+        margin: 10px 10px;
+    }
+    /* -------------------------- Configuração footer --------------*/
+    #page footer{
+        width: 100%;
+        margin-top: 100px;
+        float: left;
+    }
+    #page footer .row{
+        width: 1024px;
+        color: #fff;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+    }
+    #page footer .row .col-4{
+        width: 33%;
+        float: left;
+        /* background: #f0f; */
+    }
+    #page footer .row .col-4 img{
+        margin: 5px;
+        float: left;
+    }
+    #page footer .row .col-4 a{
+        color: #fff;
+    }
+    #page footer .row .col-4 h3{
+        font-size: 20px;
+    }
+    #page footer .copyright{
+        width: 1024px;
+        color: #fff;
+        margin: 0 auto;
+        position:relative;
+        left: 50%;
+        margin-left: -512px;
+    }
+}
