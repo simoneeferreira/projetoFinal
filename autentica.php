@@ -1,4 +1,73 @@
-﻿<!doctype html>
+<?php
+//Importando banco de dados
+    require("private/conecta.php"); 
+    $login = $_POST["login"];
+    $pass = $_POST["senha"];
+    
+    if(($pass=="")OR($login=="")){
+        $resp = "!!!Login ou senha errada!!!";
+        $bdLogin = "";
+        $bdPass = "";
+        $bdACL = "";
+    }else{
+        //Verifica se houve Pos e se o usuário ou a senha estão vazios
+        if(!empty($_POST) AND (empty($_POST['login'])OR empty($_POST['senha']))){
+            $resp = "Digite usuário e senha";
+        }else{
+            $login = mysqli_real_escape_string($conectaDB, $_POST['login']);
+            $pass = mysqli_real_escape_string($conectaDB, $_POST['senha']);
+
+            $result = mysqli_query($conectaDB, "SELECT * FROM tb_login WHERE usuario = '$login'");
+            $linhas = mysqli_num_rows($result);
+            while($aux = mysqli_fetch_assoc($result)){
+                $bdLogin = $aux["usuario"];
+                $bdPass = $aux["senha"];
+                $bdACL = $aux["id_nivelAcesso"];
+            }
+            //teste para sabe se linha <> 0
+            if ($linhas==0) {
+                $resp = "!!!Usuário não cadastrado";
+                $bdLogin = "";
+                $bdPass = "";
+                $bdACL = "";
+            }
+        }
+
+        //já esta pronto
+        if ($login == $bdLogin){
+            $resp = "usuário OK";
+            if($pass == $bdPass){
+                $resp = "Acesso Liberado!";
+                //Criando cookie de seção
+                switch($bdACL){
+                    case 1:
+                        setcookie("userLogin", $login); //Cookie de usuário
+                        setcookie("userPass", $pass); //Cookie de senha
+                        //Direcionar para a pagina
+                        header("Location: dashboard-master.php"); 
+                        break;
+                    case 2:
+                        setcookie("userLogin", $login); //Cookie de usuário
+                        setcookie("userPass", $pass); //Cookie de senha
+                        //Direcionar para a pagina
+                        header("Location: dashboard-admin.php"); 
+                        break;
+                    default:
+                        $resp = "Usuário sem nível de acesso";
+                }
+            }else{
+                $resp = "Login ou senha inválida!";
+            }
+        }else{
+            $bdLogin = "";
+            $bdPass = "";
+            $bdACL = "";
+            $resp = "Login ou senha inválida!";
+        }
+    }
+    mysqli_close($conectaDB);
+?>
+<!doctype html>
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
@@ -6,8 +75,7 @@
         <meta name="viewport" content="width-device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <!-- Inserindo os CSS -->
-        <link href="public/css/style.css" rel="stylesheet" type="text/css" media="screen">
-        <script charset="utf-8" src="public/js/script.js" language="JavaScript" type="text/javaScript"></script>
+        <link href="public/css/style-login.css" rel="stylesheet" type="text/css" media="screen">
     </head>
     <body>
         <div id="page">
@@ -50,45 +118,18 @@
             <main>
                 <!--linha 01-->
                 <div class="row">
-                    <h2>cursos em destaque</h2>
-			        <div class="destaque" id="destaque">
-                        <figure>
-                            <span class="trs next"></span>
-                            <span class="trs prev"></span>
-                            <div id="slider">
-                                <a href="cursos.html" class="trs"><img src="public/img/slide-01.jpg" alt="engenharia de computação"></a>
-                                <a href="cursos.html" class="trs"><img src="public/img/slide-02.jpg" alt="ciências da computação"></a>
-                                <a href="cursos.html" class="trs"><img src="public/img/slide-03.jpg" alt="análise e desenvolvimento de sistemas"></a>
-                            </div>
-                            <figcaption></figcaption>
-                        </figure>
-                    </div>
-                    <h3>notícias</h3>
-			        <div class="noticias1">
-                        <figure id="container">
-                            <a href="unidade-03.html"><figcaption>Nova unidade</figcaption><img src="public/img/noticias-02.jpg"></a>
-                        </figure>
-                    </div>
-                    <div class="noticias2">
-                        <figure id="container">  
-                            <figcaption>vestibular ITSP prova dia 06/06</figcaption><img src="public/img/noticias-01.jpg"></a>
-                        </figure>
-			        </div>
+                    <h1>login</h1>
                 </div>
-                <!--linha 02-->
-           	<div class="row">
-                    <h4>parceiros</h4>
-			<div class="parceiros">
-                    <img src="public/img/parceiros-01.png" alt="" title="">
-                    <img src="public/img/parceiros-02.png" alt="" title="">
-                    <img src="public/img/parceiros-03.png" alt="" title="">
-			</div>
-			<div class="parceiros">
-                    <img src="public/img/parceiros-04.png" alt="" title="">
-                    <img src="public/img/parceiros-05.png" alt="" title="">
-                    <img src="public/img/parceiros-06.png" alt="" title="">
-			</div>
-		</div>
+                <div class="row2">
+                    <form action="autentica.php" method="post" class="frm">
+                        <label for="email">E-mail</label>
+                        <input type="text" id="login" class="txt" name="login" placeholder="E-mail..." required><br>
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" class="txt" name="senha" placeholder="Senha..." required><br>
+                        <button type="submit" class="btn sucesso">Entrar</button>
+                    </form>
+                    <p><?=$resp?></p>
+                </div>
             </main>
             <!-- Fim do Corpo-->
             <!-- Inicio do Rodapé-->
@@ -108,10 +149,18 @@
                                     <li><b> telefone: </b><a rel="nofollow" alt="Clique e ligue" title="Clique e ligue" href="11 9999-0000">11 9999-0000</a></li><br>
                                     <li><strong>whatsapp: </strong><a rel="nofollow" alt="Clique e ligue" title="Clique e ligue" href="https://api.whatsapp.com/send?1=pt_BR&amp;phone=5511999990000 "target="_blank">11 99999-0000</a></li><br>
                                 </ul>
-                        </div>
-                        <div class="col-4">
                             <h3>email</h3><br>
                             <p><a href="mailto:contato@teste.com.br">contato@teste.com.br</a></p>
+                        </div>
+                        <div class="col-4">
+                            <br><h3>NewsLetter:</h3>
+                            <form action="assina-news.php" method="post" class="frm">
+                                <label for="name">Nome</label>
+                                <input type="text" id="name" class="txt" name="name" placeholder="Nome..." required><br>
+                                <label for="email">E-mail</label>
+                                <input type="text" id="email" class="txt" name="email" placeholder="E-mail..." required><br>
+                                <button type="submit" class="btn sucesso">Assinar</button>
+                            </form>
                         </div>
                     </div>    
         

@@ -1,0 +1,23 @@
+<?php
+//Arquivo para conectar ao banco de dados
+require("private/conecta.php");
+
+$usuario = $_POST["login"];
+$senha = $_POST["senha"];
+$idLogin = $_POST["id-login"];
+$idACL = $_POST["idnivelAcesso"];
+
+
+
+if (($usuario== "")||($senha== "")||($idACL== "")){
+    header ("Location: cadastro-usuario.php");
+}else{
+    $alterarUsuario = "UPDATE tb_login SET usuario = '$usuario', senha = '$senha', id_nivelAcesso = '$idACL' WHERE id_login = '$idLogin'";
+    if(mysqli_query($conectaDB, $alterarUsuario)){
+        header ("Location: cadastro-usuario.php");
+    }else{
+        echo "Error - Não foi possível gravar dado<br>".mysqli_error($conectaDB)."<a href='cadastro-usuario.php'>voltar</a>";
+    }
+}
+
+?>
